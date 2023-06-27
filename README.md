@@ -1,1 +1,2 @@
 # AudioDurationCalculator
+用来计算一个文件夹中所有音频文件时长的总和
