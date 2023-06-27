@@ -19,8 +19,13 @@ def calculate_total_duration(folder_path, include_subfolders=True):
 
     return total_duration
 
-# 示例用法
 folder_path = input("请输入音频文件所在的文件夹路径: ")
-include_subfolders = input("是否遍历子文件夹？(y/n)").lower() == "y"
+
+include_subfolders = False  # 默认不遍历子文件夹
+if os.path.isdir(folder_path):
+    subfolders = next(os.walk(folder_path))[1]
+    if subfolders:
+        include_subfolders = input("是否遍历子文件夹？(y/n)").lower() == "y"
+
 total_duration = calculate_total_duration(folder_path, include_subfolders)
 print(f"总时长：{total_duration} 秒, 约为 {total_duration / 60} 分钟, 约为 {total_duration / 3600} 小时")
